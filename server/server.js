@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
-const dotenv = reuqire('dotenv')
+const dotenv = require('dotenv')
 const app = express()
 
 app.set('port', process.env.PORT || 1337)
