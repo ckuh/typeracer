@@ -1,7 +1,6 @@
 const router = require('express').Router()
+const words = require('../controllers/words.js')
 
-router.get('', (req, res) => {
-  res.status(200).send('test')
-})
+router.get('', words.get)
 
 module.exports = router
