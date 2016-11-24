@@ -1,8 +1,8 @@
 const wordnik = require('../utils/wordnik.js')
 
-exports.get = () => {
+exports.post = (searchQuery) => {
   return new Promise((resolve, reject) => {
-    wordnik.words.randomWords()
+    wordnik.word.definitions(searchQuery)
       .then((data) => {
         resolve(data)
       })
