@@ -29,7 +29,7 @@ class Home extends Component {
 
     if (e.which === 32 && words.userInput.length) {
       words.userWords.push(words.userInput)
-      this.props.updateWords(words.userWords)
+      this.props.updateWords({userWords: words.userWords, userInput: '', curWordPos: words.curWordPos + 1})
     }
   }
 

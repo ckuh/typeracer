@@ -1,4 +1,5 @@
 export default (state = {
+  curWordPos: 0,
   userInput: '',
   userWords: [],
   wordsList: [],
@@ -17,7 +18,7 @@ export default (state = {
       return { ...state, fetched: true, wordsList: action.payload }
     }
     case 'UPDATE_WORDS': {
-      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput }
+      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput, curWordPos: action.payload.curWordPos }
     }
     case 'SET_USER_INPUT': {
       return { ...state, userInput: action.payload }

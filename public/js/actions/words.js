@@ -11,9 +11,9 @@ export function getWords () {
   }
 }
 
-export function updateWords (userWords) {
+export function updateWords (words) {
   return dispatch => {
-    dispatch({type: 'UPDATE_WORDS', payload: {userWords: userWords, userInput: ''}})
+    dispatch({type: 'UPDATE_WORDS', payload: {userWords: words.userWords, userInput: words.userInput, curWordPos: words.curWordPos}})
   }
 }
 

@@ -3,17 +3,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class WordSection extends Component {
+  setWordList () {
+    const words = this.props.words
+    return words.wordsList.length ? words.wordsList.map((word, key) => {
+      if (words.curWordPos === key) {
+        return (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px', backgroundColor: '#ddd', borderRadius: '3px'}}>
+          {word}
+        </div>)
+      } else {
+        return (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px'}}>
+          {word}
+        </div>)
+      }
+    }) : []
+  }
 
   render () {
-    let wordList = this.props.words.wordsList.length ? this.props.words.wordsList.map((word, key) => (
-      <div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px'}}>
-        <strong>{word}</strong>
-      </div>
-    )) : []
-
     return (
-      <div>
-        {wordList}
+      <div style={{fontSize: '1.6em'}}>
+        {this.setWordList()}
       </div>
     )
   }
