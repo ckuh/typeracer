@@ -4,7 +4,12 @@ const _ = require('underscore')
 exports.get = (req, res) => {
   words.get()
     .then((data) => {
-      data = _.shuffle(_.pluck(data, 'word'))
+      data = _.filter(_.shuffle(_.pluck(data, 'word')), (word) => {
+        return _.every(word, (letter) => {
+          var re = /^['a-zA-Z0-9-]+$/
+          return re.test(letter)
+        })
+      })
       res.status(200).send(data)
     })
     .catch((err) => {
