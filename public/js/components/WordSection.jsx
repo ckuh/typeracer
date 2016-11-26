@@ -17,9 +17,17 @@ class WordSection extends Component {
           </div>)
         }
       } else {
-        return (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px'}}>
-          {word}
-        </div>)
+        if (words.userWords[key] !== undefined) {
+          return words.userWords[key] === word ? (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px', color: 'green'}}>
+            {word}
+          </div>) : (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px', color: 'red'}}>
+            {word}
+          </div>)
+        } else {
+          return (<div key={key} style={{display: 'inline-block', padding: '3px 5px 3px 5px'}}>
+            {word}
+          </div>)
+        }
       }
     }) : []
   }
