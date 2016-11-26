@@ -2,23 +2,47 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { getWords } from '../actions/words'
+import { getWords, updateWords, setUserInput } from '../actions/words'
 
 // components
 import WordSection from './WordSection'
 
 class Home extends Component {
+  constructor (props) {
+    super(props)
+
+    this.userInput = this.userInput.bind(this)
+    this.updateInput = this.updateInput.bind(this)
+  }
   componentWillMount () {
     this.props.getWords()
+  }
+
+  userInput (e) {
+    if (e.target.value !== ' ') {
+      this.props.setUserInput(e.target.value)
+    }
+  }
+
+  updateInput (e) {
+    const words = this.props.words
+
+    if (e.which === 32 && words.userInput.length) {
+      words.userWords.push(words.userInput)
+      this.props.updateWords(words.userWords)
+    }
+  }
+
+  setDisplaySection () {
+    return this.props.words.wordsList.length ? (<div><WordSection /><input value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /></div>) : ''
   }
 
   render () {
     return (
       <div>
         <h1>Hello World</h1>
-        <div>
-          <WordSection />
-        </div>
+        {this.setDisplaySection()}
+        <pre><code>{JSON.stringify({userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
       </div>
     )
   }
@@ -28,8 +52,11 @@ const { object, func } = React.PropTypes
 
 Home.propTypes = {
   words: object,
-  getWords: func
+  getWords: func,
+  userInput: func,
+  updateWords: func,
+  setUserInput: func
 }
 
 const mapStateToProps = (state) => ({ words: state.words })
-export default connect(mapStateToProps, { getWords })(Home)
+export default connect(mapStateToProps, { getWords, updateWords, setUserInput })(Home)

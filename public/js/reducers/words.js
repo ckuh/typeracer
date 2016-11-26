@@ -1,4 +1,6 @@
 export default (state = {
+  userInput: '',
+  userWords: [],
   wordsList: [],
   fetching: false,
   fetched: false,
@@ -13,6 +15,12 @@ export default (state = {
     }
     case 'FETCH_WORDS_FULFILLED': {
       return { ...state, fetched: true, wordsList: action.payload }
+    }
+    case 'UPDATE_WORDS': {
+      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput }
+    }
+    case 'SET_USER_INPUT': {
+      return { ...state, userInput: action.payload }
     }
     default: {
       return { ...state }

@@ -10,3 +10,15 @@ export function getWords () {
     .catch(err => dispatch({type: 'FETCH_WORDS_FULFILLED', payload: err}))
   }
 }
+
+export function updateWords (userWords) {
+  return dispatch => {
+    dispatch({type: 'UPDATE_WORDS', payload: {userWords: userWords, userInput: ''}})
+  }
+}
+
+export function setUserInput (userInput) {
+  return dispatch => {
+    dispatch({type: 'SET_USER_INPUT', payload: userInput})
+  }
+}
