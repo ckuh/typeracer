@@ -1,5 +1,5 @@
 export default (state = {
-  wordList: [],
+  wordsList: [],
   fetching: false,
   fetched: false,
   error: false
@@ -12,7 +12,7 @@ export default (state = {
       return { ...state, fetched: false, error: action.payload }
     }
     case 'FETCH_WORDS_FULFILLED': {
-      return { ...state, fetched: true, list: action.payload }
+      return { ...state, fetched: true, wordsList: action.payload }
     }
     default: {
       return { ...state }
