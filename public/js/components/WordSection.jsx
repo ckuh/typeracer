@@ -9,7 +9,8 @@ class WordSection extends Component {
     this.state = {
       styles: {
         position: 'relative',
-        top: 0
+        top: 0,
+        userSelect: 'none'
       }
     }
 

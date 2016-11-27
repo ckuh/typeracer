@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   setDisplaySection () {
-    return this.props.words.wordsList.length ? (<div><div style={{border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '154px', padding: '6px 12px', overflow: 'hidden'}}><WordSection /></div><input value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /></div>) : ''
+    return this.props.words.wordsList.length ? (<div><div style={{border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '154px', padding: '6px 12px', overflow: 'hidden', width: '80%', margin: '0 auto 25px auto'}}><WordSection /></div><div style={{width: '100%'}}><input style={{display: 'block', margin: '0 auto', width: '60%', lineHeight: '1em', fontSize: '2em', padding: '6px 12px'}} value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /></div></div>) : ''
   }
 
   render () {
