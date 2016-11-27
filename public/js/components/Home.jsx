@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   setDisplaySection () {
-    return this.props.words.wordsList.length ? (<div><WordSection /><input value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /></div>) : ''
+    return this.props.words.wordsList.length ? (<div><div style={{border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '154px', padding: '6px 12px', overflow: 'hidden'}}><WordSection /></div><input value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /></div>) : ''
   }
 
   render () {
