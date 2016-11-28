@@ -46,14 +46,15 @@ class Home extends Component {
         <div style={wordSectionContainer}>
           <WordSection />
         </div>
-        <div style={{width: '80%', margin: '0 auto', backgroundColor: '#a7c8e7', boxSizing: 'border-box', padding: '6px'}}>
-          <input
-            style={wordSectionInput}
-            value={this.props.words.userInput}
-            onChange={this.userInput}
-            onKeyPress={this.updateInput} />
-          <Timer secondsRemaining='60' />
-          <div style={{clear: 'both'}} />
+        <div style={{width: '80%', margin: '0 auto', backgroundColor: '#a7c8e7', boxSizing: 'border-box', padding: '6px', borderRadius: '3px'}}>
+          <div style={{}}>
+            <input
+              style={wordSectionInput}
+              value={this.props.words.userInput}
+              onChange={this.userInput}
+              onKeyPress={this.updateInput} />
+              <Timer secondsRemaining='60' />
+          </div>
         </div>
       </div>
     ) : ''

@@ -31,7 +31,7 @@ class Timer extends Component {
     if (this.props.timer.startClock) {
       this.setState({secondsRemaining: this.state.secondsRemaining - 1})
       if (this.state.timePercent !== 0) {
-        this.setState({timePercent: Math.floor(((this.state.secondsRemaining - 1) / 60) * 100)})
+        this.setState({timePercent: Math.floor(((this.state.secondsRemaining) / 60) * 100)})
       }
       if (this.state.secondsRemaining <= 0) {
         clearInterval(this.interval)
@@ -88,7 +88,7 @@ const makeColor = (value) => {
   } else {
     greenValue = 255
     value = value - 255
-    redValue = 256 - (value * value / 255)
+    redValue = 255 - (value * value / 255)
     redValue = Math.round(redValue)
   }
 
