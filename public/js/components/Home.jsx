@@ -39,9 +39,24 @@ class Home extends Component {
   }
 
   setDisplaySection () {
-    const wordSectionContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '154px', padding: '6px 12px', overflow: 'hidden', width: '80%', margin: '0 auto 25px auto'}
-    const wordSectionInput = {display: 'block', margin: '0 auto', width: '60%', lineHeight: '1em', fontSize: '2em', padding: '6px 12px'}
-    return this.props.words.wordsList.length ? (<div><div style={wordSectionContainer}><WordSection /></div><div style={{width: '100%'}}><input style={wordSectionInput} value={this.props.words.userInput} onChange={this.userInput} onKeyPress={this.updateInput} /> <Timer secondsRemaining='60' /><div style={{clear: 'both'}} /></div></div>) : ''
+    const wordSectionContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '166px', padding: '6px 12px', overflow: 'hidden', width: '80%', margin: '0 auto 25px auto', boxSizing: 'border-box'}
+    const wordSectionInput = {display: 'inline-block', width: '70%', lineHeight: '1em', fontSize: '2em', padding: '6px 12px'}
+    return this.props.words.wordsList.length ? (
+      <div>
+        <div style={wordSectionContainer}>
+          <WordSection />
+        </div>
+        <div style={{width: '80%', margin: '0 auto', backgroundColor: '#a7c8e7', boxSizing: 'border-box', padding: '6px'}}>
+          <input
+            style={wordSectionInput}
+            value={this.props.words.userInput}
+            onChange={this.userInput}
+            onKeyPress={this.updateInput} />
+          <Timer secondsRemaining='60' />
+          <div style={{clear: 'both'}} />
+        </div>
+      </div>
+    ) : ''
   }
 
   render () {
