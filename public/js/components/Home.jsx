@@ -67,7 +67,7 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1 style={{textAlign: 'center'}}>Typing Test</h1>
         {this.setDisplaySection()}
         <pre><code>{JSON.stringify({userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
       </div>
