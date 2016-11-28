@@ -13,9 +13,6 @@ class Timer extends Component {
       secondsRemaining: 0,
       timePercent: 100,
       timerCss: {
-        marginLeft: '15px',
-        verticalAlign: 'top',
-        display: 'inline-block',
         height: '53px',
         width: '53px',
         lineHeight: '53px',
