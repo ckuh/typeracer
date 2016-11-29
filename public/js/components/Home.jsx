@@ -30,7 +30,9 @@ class Home extends Component {
   updateInput (e) {
     const words = this.props.words
 
-    this.props.startClock()
+    if (e.which !== 32) {
+      this.props.startClock()
+    }
 
     if (e.which === 32 && words.userInput.length) {
       words.userWords.push(words.userInput)
