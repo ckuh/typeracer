@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { getWords, updateWords, setUserInput } from '../actions/words'
+import { getWords, updateWords, setUserInput, updateWPM, updateUncorrectedErr } from '../actions/words'
 import { startClock } from '../actions/timer'
 
 // components
@@ -24,6 +24,7 @@ class Home extends Component {
   userInput (e) {
     if (e.target.value !== ' ') {
       this.props.setUserInput(e.target.value)
+      this.props.updateUncorrectedErr(this.props.words)
     }
   }
 
@@ -34,7 +35,7 @@ class Home extends Component {
 
     if (e.which === 32 && words.userInput.length) {
       words.userWords.push(words.userInput)
-      this.props.updateWords({userWords: words.userWords, userInput: '', curWordPos: words.curWordPos + 1})
+      this.props.updateWords({userWords: words.userWords, userInput: '', curWordPos: words.curWordPos + 1, totalUncorrectedErr: words.totalUncorrectedErr, uncorrectedErr: words.uncorrectedErr})
     }
   }
 
@@ -56,7 +57,7 @@ class Home extends Component {
                 onKeyPress={this.updateInput} />
             </div>
             <div style={{float: 'right', marginTop: '-53px', width: '120px'}}>
-              <Timer secondsRemaining='60' />
+              <Timer secondsRemaining='60' words={this.props.words} />
             </div>
           </div>
         </div>
@@ -69,7 +70,7 @@ class Home extends Component {
       <div>
         <h1 style={{textAlign: 'center'}}>Typing Test</h1>
         {this.setDisplaySection()}
-        <pre><code>{JSON.stringify({userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
+        <pre><code>{JSON.stringify({totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
       </div>
     )
   }
@@ -84,8 +85,10 @@ Home.propTypes = {
   updateWords: func,
   setUserInput: func,
   timer: object,
-  startClock: func
+  startClock: func,
+  updateWPM: func,
+  updateUncorrectedErr: func
 }
 
 const mapStateToProps = (state) => ({ words: state.words, timer: state.timer })
-export default connect(mapStateToProps, { getWords, updateWords, setUserInput, startClock })(Home)
+export default connect(mapStateToProps, { getWords, updateWords, setUserInput, startClock, updateWPM, updateUncorrectedErr })(Home)

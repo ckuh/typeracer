@@ -3,6 +3,10 @@ export default (state = {
   userInput: '',
   userWords: [],
   wordsList: [],
+  wpmList: [],
+  wpmCount: 0,
+  uncorrectedErr: 0,
+  totalUncorrectedErr: 0,
   fetching: false,
   fetched: false,
   error: false
@@ -18,10 +22,16 @@ export default (state = {
       return { ...state, fetched: true, wordsList: action.payload }
     }
     case 'UPDATE_WORDS': {
-      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput, curWordPos: action.payload.curWordPos }
+      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput, curWordPos: action.payload.curWordPos, totalUncorrectedErr: action.payload.totalUncorrectedErr, uncorrectedErr: action.payload.uncorrectedErr }
     }
     case 'SET_USER_INPUT': {
       return { ...state, userInput: action.payload }
+    }
+    case 'UPDATE_WPM': {
+      return { ...state, wpmCount: action.payload.wpmCount }
+    }
+    case 'UPDATE_UNCORRECTED_ERR': {
+      return { ...state, uncorrectedErr: action.payload }
     }
     default: {
       return { ...state }
