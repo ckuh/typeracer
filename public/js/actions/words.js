@@ -4,7 +4,12 @@ export function getWords () {
   return dispatch => {
     dispatch({type: 'FETCH_WORDS'})
     axios.get(
-      '/words'
+      '/words',
+      {
+        params: {
+          test: 'hard'
+        }
+      }
     )
     .then(resp => dispatch({type: 'FETCH_WORDS_FULFILLED', payload: resp.data}))
     .catch(err => dispatch({type: 'FETCH_WORDS_FULFILLED', payload: err}))
@@ -29,11 +34,17 @@ export function updateWPM (words, time) {
 
     let allTypedEntries = Math.floor(((words.userWords.join(' ').length / 5) - words.totalUncorrectedErr) / (curTime/60))
 
+    let accuracy = Math.floor(((words.userWords.join(' ').length - words.totalUncorrectedErr) / words.userWords.join(' ').length) * 100) || 0
+
     if (allTypedEntries < 0) {
       allTypedEntries = 0
     }
 
-    dispatch({type: 'UPDATE_WPM', payload: {wpmCount: allTypedEntries}})
+    if (curTime % 5 === 0 ) {
+      words.wpmList.push(allTypedEntries)
+    }
+
+    dispatch({type: 'UPDATE_WPM', payload: {wpmCount: allTypedEntries, accuracy}})
   }
 }
 

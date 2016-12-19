@@ -8,6 +8,7 @@ import { startClock } from '../actions/timer'
 // components
 import WordSection from './WordSection'
 import Timer from './Timer'
+import WordPerMinInfo from './WordPerMinInfo'
 
 class Home extends Component {
   constructor (props) {
@@ -61,6 +62,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <WordPerMinInfo />
       </div>
     ) : ''
   }
@@ -70,7 +72,7 @@ class Home extends Component {
       <div>
         <h1 style={{textAlign: 'center'}}>Typing Test</h1>
         {this.setDisplaySection()}
-        <pre><code>{JSON.stringify({totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
+        <pre><code>{JSON.stringify({wpmList: this.props.words.wpmList, totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
       </div>
     )
   }
