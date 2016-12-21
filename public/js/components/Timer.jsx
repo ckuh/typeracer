@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 // components
 import { Circle } from 'rc-progress'
 
+// actions
+import { updateTimer } from '../actions/timer'
+import { updateWPM } from '../actions/words'
+
 class Timer extends Component {
   constructor (props) {
     super(props)
@@ -27,6 +31,9 @@ class Timer extends Component {
   tick () {
     if (this.props.timer.startClock) {
       this.setState({secondsRemaining: this.state.secondsRemaining - 1})
+      this.props.updateTimer(this.state.secondsRemaining)
+      this.props.updateWPM(this.props.words, this.props.timer.timer)
+
       if (this.state.timePercent !== 0) {
         this.setState({timePercent: Math.floor(((this.state.secondsRemaining) / 60) * 100)})
       }
@@ -57,15 +64,18 @@ class Timer extends Component {
   }
 }
 
-const { string, object } = React.PropTypes
+const { string, object, func } = React.PropTypes
 
 Timer.propTypes = {
   secondsRemaining: string,
-  timer: object
+  timer: object,
+  updateTimer: func,
+  updateWPM: func,
+  words: object
 }
 
 const mapStateToProps = (state) => ({ timer: state.timer })
-export default connect(mapStateToProps, {})(Timer)
+export default connect(mapStateToProps, { updateTimer, updateWPM })(Timer)
 
 const intToHex = (i) => {
   var hex = parseInt(i, 10).toString(16)
