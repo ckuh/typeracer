@@ -21,22 +21,16 @@ class ChartInfo extends Component {
       this.state.myChart.update()
     }
   }
-  // ['0', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60']
   setupChart () {
     let ctx = document.getElementById('myChart')
     let myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        // labels: [],
         datasets: [{
           label: 'WPM',
           data: this.props.words.wpmList,
-          backgroundColor: [
-            'rgba(75,192,192,.2)'
-          ],
-          borderColor: [
-            'rgba(75,192,192,1)'
-          ],
+          backgroundColor: 'rgba(75,192,192,0.4)',
+          borderColor: 'rgba(75,192,192,1)',
           borderWidth: 1
         }]
       },

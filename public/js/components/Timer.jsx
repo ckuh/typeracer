@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Circle } from 'rc-progress'
 
 // actions
-import { updateTimer } from '../actions/timer'
+import { updateTimer, finishedTest } from '../actions/timer'
 import { updateWPM } from '../actions/words'
 
 class Timer extends Component {
@@ -39,6 +39,7 @@ class Timer extends Component {
       }
       if (this.state.secondsRemaining <= 0) {
         clearInterval(this.interval)
+        this.props.finishedTest()
       }
     }
   }
@@ -71,11 +72,12 @@ Timer.propTypes = {
   timer: object,
   updateTimer: func,
   updateWPM: func,
+  finishedTest: func,
   words: object
 }
 
 const mapStateToProps = (state) => ({ timer: state.timer })
-export default connect(mapStateToProps, { updateTimer, updateWPM })(Timer)
+export default connect(mapStateToProps, { updateTimer, updateWPM, finishedTest })(Timer)
 
 const intToHex = (i) => {
   var hex = parseInt(i, 10).toString(16)

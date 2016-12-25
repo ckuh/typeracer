@@ -10,7 +10,8 @@ export default (state = {
   totalUncorrectedErr: 0,
   fetching: false,
   fetched: false,
-  error: false
+  error: false,
+  finished: false
 }, action) => {
   switch (action.type) {
     case 'FETCH_WORDS': {
@@ -33,6 +34,9 @@ export default (state = {
     }
     case 'UPDATE_UNCORRECTED_ERR': {
       return { ...state, uncorrectedErr: action.payload }
+    }
+    case 'FINSHED_TEST': {
+      return { ...state, finished: true }
     }
     default: {
       return { ...state }

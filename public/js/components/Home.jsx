@@ -9,6 +9,7 @@ import { startClock } from '../actions/timer'
 import WordSection from './WordSection'
 import Timer from './Timer'
 import WordPerMinInfo from './WordPerMinInfo'
+import WPMData from './WPMData'
 
 class Home extends Component {
   constructor (props) {
@@ -25,7 +26,7 @@ class Home extends Component {
   userInput (e) {
     if (e.target.value !== ' ') {
       this.props.setUserInput(e.target.value)
-      this.props.updateUncorrectedErr(this.props.words)
+      this.props.updateUncorrectedErr(e.target.value, this.props.words.wordsList[this.props.words.curWordPos])
     }
   }
 
@@ -44,12 +45,16 @@ class Home extends Component {
 
   setDisplaySection () {
     const wordSectionContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '166px', padding: '6px 12px', overflow: 'hidden', width: '80%', margin: '0 auto 25px auto', boxSizing: 'border-box'}
+    const WPMdataContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', padding: '6px 12px', width: '80%', margin: '0 auto 25px auto', boxSizing: 'border-box', textAlign: 'center'}
     const wordSectionInput = {width: '100%', lineHeight: '1em', fontSize: '2em', padding: '6px 12px', boxSizing: 'border-box', outline: 'none'}
+    const wordSection = this.props.words.finished ? (<div style={WPMdataContainer}>
+      <WPMData />
+    </div>) : (<div style={wordSectionContainer}>
+      <WordSection />
+    </div>)
     return this.props.words.wordsList.length ? (
       <div style={{maxWidth: '1300px', margin: '0 auto'}}>
-        <div style={wordSectionContainer}>
-          <WordSection />
-        </div>
+        {wordSection}
         <div style={{width: '80%', margin: '0 auto', backgroundColor: '#a7c8e7', boxSizing: 'border-box', padding: '6px', borderRadius: '3px'}}>
           <div style={{width: '60%', margin: '0 auto'}}>
             <div style={{marginRight: '130px'}}>
@@ -74,7 +79,7 @@ class Home extends Component {
       <div>
         <h1 style={{textAlign: 'center'}}>Typing Test</h1>
         {this.setDisplaySection()}
-        <pre><code>{JSON.stringify({wpmList: this.props.words.wpmList, totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
+        <pre><code>{JSON.stringify({finished: this.props.words.finished, totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
       </div>
     )
   }

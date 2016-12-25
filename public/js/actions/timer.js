@@ -9,3 +9,9 @@ export function updateTimer (timer) {
     dispatch({type: 'UPDATE_CLOCK', payload: {timer}})
   }
 }
+
+export function finishedTest () {
+  return dispatch => {
+    dispatch({type: 'FINSHED_TEST'})
+  }
+}

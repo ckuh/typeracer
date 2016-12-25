@@ -32,7 +32,7 @@ export function updateWPM (words, time) {
   return dispatch => {
     let curTime = 60 - time || 1
 
-    let allTypedEntries = Math.floor(((words.userWords.join(' ').length / 5) - words.totalUncorrectedErr) / (curTime/60))
+    let allTypedEntries = Math.floor(((words.userWords.join(' ').length / 5) -  words.totalUncorrectedErr) / (curTime/60))
 
     let accuracy = Math.floor(((words.userWords.join(' ').length - words.totalUncorrectedErr) / words.userWords.join(' ').length) * 100) || 0
 
@@ -48,24 +48,18 @@ export function updateWPM (words, time) {
   }
 }
 
-export function updateUncorrectedErr (words) {
+export function updateUncorrectedErr (str1, str2) {
+  const errCount = (str1, str2) => {
+    let count = 0
+    str2.split('').forEach((letter, i) => {
+      if (!str1[i] || str1[i] !== letter) { count++ }
+    })
+    return count
+  }
+
   return dispatch => {
-    const uncorrectedErr = editDistance(words.userInput, words.wordsList[words.curWordPos]) - 1
+    const uncorrectedErr = errCount(str1, str2)
 
     dispatch({type: 'UPDATE_UNCORRECTED_ERR', payload: uncorrectedErr})
   }
-}
-
-const editDistance = (str1, str2) => {
-  let m = str1.length, n = str2.length, lookup = Array(m)
-  for (let i = 0; i <= m; i++) {
-    lookup[i] = Array(n)
-    for (let j = 0; j <= n; j++) {
-      if (i === 0) lookup[i][j] = j
-      else if (j === 0) lookup[i][j] = i
-      else if (str1[i-1] === str2[j-1]) lookup[i][j] = lookup[i-1][j-1]
-      else lookup[i][j] = 1 + Math.min(lookup[i][j-1], lookup[i-1][j], lookup[i-1][j-1])
-    }
-  }
-  return lookup[m][n]
 }
