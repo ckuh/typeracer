@@ -40,8 +40,8 @@ export function updateWPM (words, time) {
       allTypedEntries = 0
     }
 
-    if (curTime % 5 === 0 ) {
-      words.wpmList.push(allTypedEntries)
+    if (curTime % 2 === 0) {
+      words.wpmList.push({x: curTime, y: allTypedEntries})
     }
 
     dispatch({type: 'UPDATE_WPM', payload: {wpmCount: allTypedEntries, accuracy}})

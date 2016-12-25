@@ -4,7 +4,7 @@ export default (state = {
   userInput: '',
   userWords: [],
   wordsList: [],
-  wpmList: [0],
+  wpmList: [{x: 0, y: 0}],
   wpmCount: 0,
   uncorrectedErr: 0,
   totalUncorrectedErr: 0,
