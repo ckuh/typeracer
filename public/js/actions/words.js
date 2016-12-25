@@ -40,7 +40,7 @@ export function updateWPM (words, time) {
       allTypedEntries = 0
     }
 
-    if (curTime % 2 === 0) {
+    if (curTime % 3 === 0) {
       words.wpmList.push({x: curTime, y: allTypedEntries})
     }
 
@@ -54,6 +54,9 @@ export function updateUncorrectedErr (str1, str2) {
     str2.split('').forEach((letter, i) => {
       if (!str1[i] || str1[i] !== letter) { count++ }
     })
+    if (str1.length > str2.length) {
+      count += str1.length - str2.length
+    }
     return count
   }
 

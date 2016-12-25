@@ -35,6 +35,7 @@ class ChartInfo extends Component {
         }]
       },
       options: {
+        responsive: true,
         scales: {
           yAxes: [{
             ticks: {
