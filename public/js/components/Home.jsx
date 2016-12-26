@@ -52,17 +52,25 @@ class Home extends Component {
     </div>) : (<div style={wordSectionContainer}>
       <WordSection />
     </div>)
+    const input = this.props.words.finished ? (<input
+      style={wordSectionInput}
+      value={this.props.words.userInput}
+      onChange={this.userInput}
+      onKeyPress={this.updateInput}
+      readOnly
+    />) : (<input
+      style={wordSectionInput}
+      value={this.props.words.userInput}
+      onChange={this.userInput}
+      onKeyPress={this.updateInput}
+    />)
     return this.props.words.wordsList.length ? (
       <div style={{maxWidth: '1300px', margin: '0 auto'}}>
         {wordSection}
         <div style={{width: '80%', margin: '0 auto', backgroundColor: '#a7c8e7', boxSizing: 'border-box', padding: '6px', borderRadius: '3px'}}>
           <div style={{width: '60%', margin: '0 auto'}}>
             <div style={{marginRight: '130px'}}>
-              <input
-                style={wordSectionInput}
-                value={this.props.words.userInput}
-                onChange={this.userInput}
-                onKeyPress={this.updateInput} />
+              {input}
             </div>
             <div style={{float: 'right', marginTop: '-53px', width: '120px'}}>
               <Timer secondsRemaining='60' words={this.props.words} />
