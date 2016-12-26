@@ -90,7 +90,7 @@ class Home extends Component {
       <div>
         <h1 style={{textAlign: 'center'}}>Typing Test</h1>
         {this.setDisplaySection()}
-        <pre><code>{JSON.stringify({finished: this.props.words.finished, totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre>
+        {/* <pre><code>{JSON.stringify({finished: this.props.words.finished, totalUncorrectedErr: this.props.words.totalUncorrectedErr, uncorrectedErr: this.props.words.uncorrectedErr, wpmCount: this.props.words.wpmCount, timer: this.props.timer.timer, userInput: this.props.words.userInput, userWords: this.props.words.userWords}, null, 4)}</code></pre> */}
       </div>
     )
   }
