@@ -10,6 +10,7 @@ import WordSection from './WordSection'
 import Timer from './Timer'
 import WordPerMinInfo from './WordPerMinInfo'
 import WPMData from './WPMData'
+import RefreshBttn from './RefreshBttn'
 
 class Home extends Component {
   constructor (props) {
@@ -74,6 +75,8 @@ class Home extends Component {
             </div>
             <div style={{float: 'right', marginTop: '-53px', width: '120px'}}>
               <Timer secondsRemaining='60' words={this.props.words} />
+              <RefreshBttn />
+              <div style={{clear: 'both'}} />
             </div>
           </div>
         </div>

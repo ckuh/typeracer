@@ -17,11 +17,13 @@ class Timer extends Component {
       secondsRemaining: 0,
       timePercent: 100,
       timerCss: {
+        float: 'left',
         height: '53px',
         width: '53px',
         lineHeight: '53px',
         fontSize: '2em',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginRight: '10px'
       }
     }
 
