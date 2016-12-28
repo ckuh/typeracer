@@ -59,7 +59,7 @@ class Home extends Component {
     </div>)
     const input = this.props.words.finished ? (<input
       style={wordSectionInput}
-      value={this.props.words.userInput}
+      value={''}
       readOnly
     />) : (<input
       ref={input => { this.nameInput = input }}
