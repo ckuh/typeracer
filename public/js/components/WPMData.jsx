@@ -7,10 +7,18 @@ class WPMData extends Component {
       <div>
         <h4 style={{margin: '0'}}>Result</h4>
         <div>
-          {this.props.words.wpmCount} WPM
+          <span style={{color: 'green'}}>
+            {this.props.words.wpmCount} WPM
+          </span>
         </div>
         <div>
-          Keystrokes: {this.props.words.userWords.join(' ').length} (<span style={{color: 'green'}}>{this.props.words.userWords.join(' ').length - this.props.words.totalUncorrectedErr}</span> | <span style={{color: 'red'}}>{this.props.words.totalUncorrectedErr}</span>)
+          Keystrokes: (<span style={{color: 'green'}}>{this.props.words.userWords.join(' ').length - this.props.words.totalUncorrectedErr}</span> | <span style={{color: 'red'}}>{this.props.words.totalUncorrectedErr}</span>) {this.props.words.userWords.join(' ').length}
+        </div>
+        <div>
+          Correct words: <span style={{color: 'green'}}>{Math.ceil(this.props.words.userWords.join(' ').length / 5)}</span>
+        </div>
+        <div>
+          Wrong words: <span style={{color: 'red'}}>{Math.ceil(this.props.words.totalUncorrectedErr / 5)}</span>
         </div>
       </div>
     )

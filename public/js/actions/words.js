@@ -32,9 +32,9 @@ export function updateWPM (words, time) {
   return dispatch => {
     let curTime = 60 - time || 1
 
-    let allTypedEntries = Math.floor(((words.userWords.join(' ').length / 5) - (words.totalUncorrectedErr / 5)) / (curTime / 60))
+    let allTypedEntries = Math.ceil(((words.userWords.join(' ').length / 5) - (words.totalUncorrectedErr / 5)) / (curTime / 60))
 
-    let accuracy = Math.floor(((words.userWords.join(' ').length - words.totalUncorrectedErr) / words.userWords.join(' ').length) * 100) || 0
+    let accuracy = Math.ceil(((words.userWords.join(' ').length - words.totalUncorrectedErr) / words.userWords.join(' ').length) * 100) || 0
 
     if (allTypedEntries < 0) {
       allTypedEntries = 0
