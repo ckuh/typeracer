@@ -22,13 +22,15 @@ class WPMData extends Component {
             <tr>
               <td style={left}>Correct words: </td>
               <td style={right}>
-                <span style={{color: 'green'}}>{Math.ceil(this.props.words.userWords.join(' ').length / 5)}</span>
+                {/* <span style={{color: 'green'}}>{Math.ceil(this.props.words.userWords.join(' ').length / 5)}</span> */}
+                <span style={{color: 'green'}}>{this.props.words.correctCount}</span>
               </td>
             </tr>
             <tr>
               <td style={left}>Wrong words: </td>
               <td style={right}>
-                <span style={{color: 'red'}}>{Math.ceil(this.props.words.totalUncorrectedErr / 5)}</span>
+                {/* <span style={{color: 'red'}}>{Math.ceil(this.props.words.totalUncorrectedErr / 5)}</span> */}
+                <span style={{color: 'red'}}>{this.props.words.uncorrectCount}</span>
               </td>
             </tr>
           </tbody>

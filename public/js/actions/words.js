@@ -18,7 +18,11 @@ export function getWords () {
 
 export function updateWords (words) {
   return dispatch => {
-    dispatch({type: 'UPDATE_WORDS', payload: {userWords: words.userWords, userInput: words.userInput, curWordPos: words.curWordPos, totalUncorrectedErr: words.totalUncorrectedErr + words.uncorrectedErr, uncorrectedErr: 0}})
+    let uncorrectCount = words.uncorrectCount
+    let correctCount = words.correctCount
+    if (words.uncorrectedErr > 0) { uncorrectCount++ }
+    if (words.uncorrectedErr === 0) { correctCount++ }
+    dispatch({type: 'UPDATE_WORDS', payload: {userWords: words.userWords, userInput: words.userInput, curWordPos: words.curWordPos, totalUncorrectedErr: words.totalUncorrectedErr + words.uncorrectedErr, uncorrectedErr: 0, uncorrectCount, correctCount}})
   }
 }
 

@@ -8,6 +8,8 @@ export default (state = {
   wpmCount: 0,
   uncorrectedErr: 0,
   totalUncorrectedErr: 0,
+  correctCount: 0,
+  uncorrectCount: 0,
   fetching: false,
   fetched: false,
   error: false,
@@ -24,7 +26,7 @@ export default (state = {
       return { ...state, fetched: true, wordsList: action.payload }
     }
     case 'UPDATE_WORDS': {
-      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput, curWordPos: action.payload.curWordPos, totalUncorrectedErr: action.payload.totalUncorrectedErr, uncorrectedErr: action.payload.uncorrectedErr }
+      return { ...state, userWords: action.payload.userWords, userInput: action.payload.userInput, curWordPos: action.payload.curWordPos, totalUncorrectedErr: action.payload.totalUncorrectedErr, uncorrectedErr: action.payload.uncorrectedErr, uncorrectCount: action.payload.uncorrectCount, correctCount: action.payload.correctCount }
     }
     case 'SET_USER_INPUT': {
       return { ...state, userInput: action.payload }
