@@ -52,7 +52,7 @@ class Home extends Component {
     const wordSectionContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', height: '166px', padding: '6px 12px', overflow: 'hidden', width: '80%', margin: '0 auto 25px auto', boxSizing: 'border-box'}
     const WPMdataContainer = {border: '1px solid black', borderRadius: '3px', fontSize: '2.2em', padding: '6px 12px', width: '80%', margin: '0 auto 25px auto', boxSizing: 'border-box', textAlign: 'center'}
     const wordSectionInput = {width: '100%', lineHeight: '1em', fontSize: '2em', padding: '6px 12px', boxSizing: 'border-box', outline: 'none'}
-    const wordSection = this.props.words.finished ? (<div style={WPMdataContainer}>
+    const wordSection = !this.props.words.finished ? (<div style={WPMdataContainer}>
       <WPMData />
     </div>) : (<div style={wordSectionContainer}>
       <WordSection />
