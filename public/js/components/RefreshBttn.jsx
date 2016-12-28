@@ -14,7 +14,8 @@ const RefreshBttn = () => {
       textAlign: 'center',
       padding: '0',
       margin: '0',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      cursor: 'pointer'
     }}
       onClick={handleClick}>
       <img src='../../img/refresh.png'
