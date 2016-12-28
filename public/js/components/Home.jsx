@@ -20,6 +20,10 @@ class Home extends Component {
     this.updateInput = this.updateInput.bind(this)
   }
 
+  componentDidUpdate () {
+    if (this.nameInput) { this.nameInput.focus() }
+  }
+
   componentWillMount () {
     this.props.getWords()
   }
@@ -56,10 +60,9 @@ class Home extends Component {
     const input = this.props.words.finished ? (<input
       style={wordSectionInput}
       value={this.props.words.userInput}
-      onChange={this.userInput}
-      onKeyPress={this.updateInput}
       readOnly
     />) : (<input
+      ref={input => { this.nameInput = input }}
       style={wordSectionInput}
       value={this.props.words.userInput}
       onChange={this.userInput}
